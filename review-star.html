@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <title>Document</title>
+    <link rel="stylesheet" href="ress.css">
+    <style>
+
+        body {
+            margin: 30px 0px 0px 30px;       
+
+        }
+  
+        .review {
+            display: flex;
+            flex-direction: column;
+            border-top:2px dotted rgb(207, 207, 207) ;
+            border-bottom:2px dotted rgb(207, 207, 207) ;
+            gap: 10px;
+            padding: 20px 0px 20px 0px;
+            width: 500px;    
+            
+        }
+
+        .review__content{
+            display: flex;
+            justify-content: space-between;          
+            
+        }
+
+        .review__content--title {
+            font-size: 20px;
+            font-weight: 600;
+
+        }
+
+        .review__content--delete {
+            font-size: 15px;
+            color: #007185;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+
+        }
+
+        .review__star-box {
+            display: flex;
+            
+        }
+
+        .star {
+            border: none;
+            width: 40px;
+            height: 40px;
+            background-image: url(white-star.jpg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            
+        }
+
+        .star.change {
+        background-image: url(yellow-star.jpg);
+        }    
+    </style>
+
+</head>
+<body>
+    <div class="review">
+        <div class="review__content">
+            <p class="review__content--title">残業代評価</p>
+            <button class="review__content--delete">消去</button>
+        </div>    
+        <div class="review__star-box">
+            <button class="star star1"></button>
+            <button class="star star2"></button>
+            <button class="star star3"></button>
+            <button class="star star4"></button>
+            <button class="star star5"></button>
+        </div>   
+    </div>
+
+      <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $(".star1").click(function() {
+            $(".star1").addClass("change");
+            $(".star2.change, .star3.change, .star4.change, .star5.change").removeClass("change");
+
+            });
+
+            $(".star2").click(function() {
+            $(".star1, .star2").addClass("change");
+            $(".star3.change, .star4.change, .star5.change").removeClass("change");
+            
+            });
+
+            $(".star3").click(function() {
+            $(".star1, .star2, .star3").addClass("change");
+            $(".star4.change, .star5.change").removeClass("change");
+            });
+
+            $(".star4").click(function() {
+            $(".star1, .star2, .star3, .star4").addClass("change");
+            $(".star5.change").removeClass("change");
+            
+            });
+
+            $(".star5").click(function() {
+            $(".star1, .star2, .star3, .star4, .star5").addClass("change");
+            });
+
+            $(".review__content--delete").click(function() {
+            $(".star1.change, .star2.change, .star3.change, .star4.change, .star5.change").toggleClass("change");
+            });
+
+        });
+    </script>
+</body>
+</html>
